@@ -4903,6 +4903,15 @@ pages:
         useful expressive aggregations and abstractions for data. You may be familiar with object oriented programming (OOP) as one
         such way. In this chapter we'll explore the Rust programming language beyond functions.
   - beta: true
+  
+    ie:
+      title: Capitul 7 - Object-orientat Programmation 
+      content_markdown: |
+        Li expression de idés tra functiones es un metode pruvat por representar conduida e data (C ha
+        fat talmen durant decennies!). Historicmen, scientie computoral ha trovat altri expressiv e
+        util agregationes e abstractiones por data. Tu es cert familiari con object-orientat programmation (OOP)
+        quam un tal metode. In ti-ci capitul noi va explorar li lingue de programmation Rust ultra functiones.
+
     en:
       title: What Is OOP?
       content_markdown: |
@@ -4912,6 +4921,16 @@ pages:
         * Polymorphism - The ability to interacting with an object from different functional perspectives.
         * Inheritence - The ability to inherit data and behavior from other objects.
   - beta: true
+
+    ie:
+      title: Quo es OOP?
+      content_markdown: |
+        Object-orientat programmation, curtmen dit, parla pri lingues de programmation con quelc trates iconic:
+        * Objectes - Ili converge data e functiones ad-in li unitá conceptional de un singul tip nominat un *objecte*.
+        * Incapsulation - On cela data e membres de functiones por obfuscacr detallies de implementation de un objecte.
+        * Polimorfisme - Li habilitá de interacter con un objecte ex diferent perspectives functional.
+        * Heredantie (inheritance) - Li habilitá de heredar data e conduida de altri objectes.
+
     en:
       title: Rust Is Not OOP
       content_markdown: |
@@ -4922,6 +4941,17 @@ pages:
 
         That said, Rust implements many programming language features that you might not mind this lacking.
   - beta: true
+
+    ie:
+      title: Rust ne es OOP
+      content_markdown: |
+        A Rust manca li grand trates de heredantie de data e conduida.
+
+        * Structs ne posse heredar campes de un struct genitoral.
+        * Structs ne posse heredar functiones de un struct genitoral.
+
+        Malgré to, Rust implementa mult trates programmistic con queles tu certmen ne va suciar te pri lor absentie.
+
     en:
       title: Object Methods
       content_markdown: |
@@ -4941,6 +4971,26 @@ pages:
         }
         ```
   - beta: true
+
+    ie:
+      title: Metodes por Objectes
+      content_markdown: |
+        Rust subtene li concepte de un *object* quam un struct con functiones associat (anc conosset quam *metodes*).
+
+        Li unesim parametre de quelcunc metode deve esser un referentie al instantie associat con li voca del metode (p.ex. `instantieDeObj.foo()`) Rust usa:
+        * `&self` - Ínmutabil referentie al instantie.
+        * `&mut self` - Mutabil referentie al instantie.
+
+        Metodes es definat inter:
+        ```rust
+        impl MyStruct {
+          ...
+          fn foo(&self){
+            ...
+          }
+        }
+        ```
+
     en:
       title: Encapsulation In Objects
       content_markdown: |
@@ -4950,6 +5000,16 @@ pages:
 
         The `pub` keyword exposes struct fields and methods outside of the module.
   - beta: true
+
+    ie:
+      title: Incapsulation in Objectes
+      content_markdown: |
+        Rust posse celar li activitá intern de objectes.
+
+        Predefinitmen, campes e metodes es accessibil solmen al modul a quel ili apartene.
+
+        Li clave-parol `pub` exposi campes e metodes del structes éxter li modul.
+
     en:
       title: Polymorphism With Traits
       content_markdown: |
@@ -4978,6 +5038,35 @@ pages:
         }
         ```
   - beta: true
+
+    ie:
+      title: Polimorfisme con Trates
+      content_markdown: |
+        Rust subtene polimorfisme con trates (traits). Con trates noi posse associar un gruppe de metodes con un tip de struct.
+
+        Ante omno, noi defina li signaturas de metodes de un trate intra:
+        ```
+        trait MiTrate {
+          fn foo(&self)
+          ...
+        }
+        ```
+
+        Quande un struct implementa un trate, it etablisse un contracte secun quel noi posse índirectmen interacter con li struct
+        tra li tip del trate (p.ex. `&MiTrate`) sin dever conossen li ver tip.
+
+        Li implementat trate-metodes de un struct es definat intra:
+
+        ```rust
+        impl MiTrate for MyStruct {
+          fn foo(&self){
+            ...
+          }
+          ...
+        }
+        ```
+
+
     en:
       title: Implemented Methods On Traits
       content_markdown: |
@@ -4986,11 +5075,26 @@ pages:
         The functions have no direct access to the inner fields of a struct, but it can 
         be useful for sharing behavior between many trait implementors.
   - beta: true
+
+    ie:
+      title: Implementat Metodes sur Trates
+      content_markdown: |
+        Trates posse haver metodes implementat.
+
+        Li functiones have null direct accesse al inter campes de un struct, ma it posse esser
+        util por partiprender conduida inter mani implementatores de trates.
+
     en:
       title: Trait Inheritence
       content_markdown: |
         Traits can inherit methods from other traits.
   - beta: true
+
+    ie:
+      title: Heredantie de Trates
+      content_markdown: |
+        Trates posse heredar metodes ex altri trates.
+
     en:
       title: Dynamic vs Static Dispatch
       content_markdown: |
@@ -5000,6 +5104,15 @@ pages:
         
         Traits types `&MyTrait` give us the ability to work with instances of objects indirectly using dynamic dispatch.
   - beta: true
+
+    ie:
+      title: Dinamic Dispatch Contra Static Dispatch (Depeche)
+        On execute metodes secun du manieres quam seque:
+        * dispatch static - Quande on save li tip del instantie, noi save directmen pri quel function a vocar.
+        * dispatch dinamic - Quande on ne save li tip del instantie, noi deve trovar un maniere por vocar li function corect.
+
+        Li tip de un trate `&MyTrait` possibilisa li manipulation de objectes índirectmen con dispatch dinamic.
+
     en:
       title: Trait Objects
       content_markdown: |
@@ -5011,6 +5124,18 @@ pages:
         Memory details:
         * This list of functions is known in C++ as a *vtable*.
   - beta: true
+
+    ie:
+      title: Trate-Objectes
+      content_markdown: |
+        Quande noi transfere un instantie de un objecte a un parametre del tip `&MyTrait` noi transfere un cose nominat un *trait object*.
+
+        Un trait object es to quel auxilia nos índirectmen vocar li corect metodes de un instantie. Un trait object es un struct quel tene li puntator de
+        nor instantie con un liste de puntatores del functiones al metodes de nor instantie.
+
+        Detallies pri memorie:
+        * On conosse ti-ci liste de functiones in C++ quam un *vtable*.
+
     en:
       title: Handling Unsized Data
       content_markdown: |
@@ -5020,6 +5145,16 @@ pages:
         * `generics` - Using parameterized types effectively create struct/functions known types and thus known sizes.
         * `heap data` - Putting instances on the heap gives us a level of indirection that allow us to not have to worry about the size of the actual type and just store a pointer to it.
   - beta: true
+
+    ie:
+      title: Gerer Data sin Grandore
+      content_markdown: |
+        Trates introducte un defí interessant quande noi intente plazzar les in un altri struct. Trates obfusca li original struct
+        e pro to obfusta anc li grandore original. In Rust on plazza valores sin grandore in structs secun li metodes a sequer:
+
+        * `génerics` - Usante tipes parametrisat on crea conosset tipes de structs/functiones (e pro to con un grandore conosset) con efectivitá.
+        * `data sur li heap` - Plazzante instanties sur li heap da nos un nivelle de índirection con quel noi ne deve suciar pri li grandore del ver tip - on plazza un puntator e li afere es liquidat.
+
     en:
       title: Generic Functions
       content_markdown: |
@@ -5036,6 +5171,23 @@ pages:
         By using generics we we create static typed functions at compile time that will have known types and sizes, allowing us to
         perform static dispatch and store as as sized value.
   - beta: true
+
+    ie:
+      title: Functiones Géneric
+      content_markdown: |
+        Génerics in Rust labora manu a manu con trates. Quande noi descri un parametrisat tip `T` noi posse limitar li tipes queles
+        posse esser usat quam argument per un inlistation del trates queles li argument deve implementar.
+
+        In ti-ci exemple, li tip `T` deve implementar li trate `Foo`:
+        ```rust
+        fn miFunction<T>(foo:T) where T:Foo {
+          ...
+        }
+        ```
+
+        Usante génerics noi posse crear functiones static tipat durant li compilation con conosset tipes e grandores, con quel noi posse
+        usar dispatch static e plazzar les quam valores con grandores conosset.
+
     en:
       title: Generic Function Shorthand
       content_markdown: |
@@ -5056,6 +5208,27 @@ pages:
         }
         ```
   - beta: true
+
+    ie:
+      title: Abreviation de Functiones Géneric
+      content_markdown: |
+        In Rust on posse abreviar li expression de génerics limitat per un trate:
+        Li max simplic metode es que noi esa un expression de parametre `impl MyTrait`:
+
+        ```rust
+        fn mi_function(foo: impl Foo){
+          ...
+        }
+        ```
+
+        equivale scrir:
+
+        ```rust
+        fn miFunction<T>(foo:T) where T:Foo {
+          ...
+        }
+        ```
+    
     en:
       title: Box
       content_markdown: |
@@ -5073,6 +5246,23 @@ pages:
         Box::new(Foo{ ... })
         ```
   - beta: true
+
+    ie:
+      title: Buxe
+      content_markdown: |
+        Un buxe (`Box`) es un structura de data quel auxilia nos transferer nor data del stack al heap.
+
+        `Box` es un struct conosset quam un *smart pointer* (puntator inteligent) quel tene li puntator a nor data sur li heap.
+
+        Nam `Box` es un struct con grandore conosset (nam it tene solmen un puntator), on usa it sovente
+        por plazzar un referentie a alquo in un struct quel deve conosser li grandore de su campes.
+
+        `Box` es tam frequentmen usat que on posse usar it omniloc:
+
+        ```rust
+        Box::new(Foo{ ...})
+        ```
+
     en:
       title: Generic Structs Revisited
       content_markdown: |
@@ -5093,6 +5283,28 @@ pages:
         }
         ```
   - beta: true
+
+    ie:
+      title: Un Revisitation al Structs Géneric
+      content_markdown: |
+        Anc structs géneric posse usar trates por limitar lor tipes parametrisat.
+
+        ```rust
+        struct MiStruct<T> where T:MiTrate {
+          foo: T
+          ...
+        }
+        ```
+
+        Struct-metodes e implementat trate-metodes por géneric structs have li parametrisat tip del struct sur li clave-parol `impl`:
+
+        ```rust
+        impl<T> MiStruct<T>{
+          ...
+        }
+        ```
+
+
     en:
       title: Chapter 7 - Conclusion
       content_markdown: |
@@ -5102,6 +5314,16 @@ pages:
         with `Box`. In the next chapter we'll learn about how smart pointers can help us with other
         specialized memory situations.
   - beta: true
+
+    ie:
+      title: Capitul 7 - Conclusion
+      content_markdown: |
+        Noi ja conosse plu caractersticas del lingue por auxilia nos clarmen representar nor idés!
+        Benque abstractiones in Rust es simplic, ili es tam potent que ili da nos joya quande noi
+        scri nor code. In ti-ci capitul noi brevmen videt puntatores inteligent con `Box`.
+        In li capitul a sequer noi va aprender pri qualmen puntatores inteligent posse auxiliar nos
+        in altri situationes specialisat in li gerentie de memorie.
+
     chapter: 8
     en:
       title: Chapter 8 - Smart Pointers
@@ -5295,3 +5517,522 @@ pages:
       content_markdown: |
         Isso é tudo por enquanto. Fique ligado para novos conteúdos. Espero que
         se divirta nesta jornada!
+ln!(%22%7B%7D%22%2C%20foo_a.x)%3B%0A%20%20%20%20%2F%2F%20foo_a%20is%20dropped%20here%20because%20it's%20no%20longer%0A%20%20%20%20%2F%2F%20used%20to%20after%20this%20location%0A%0A%20%20%20%20println!(%22%7B%7D%22%2C%20foo_b.x)%3B%0A%20%20%20%20%2F%2F%20foo_b%20is%20dropped%20here%20because%20of%20the%20end%0A%20%20%20%20%2F%2F%20of%20the%20function%20scope%0A%7D%0A
+    fr:
+      title: Management des ressources basé sur la portée (en anglais scope)
+      content_markdown: |
+        Rust prend en compte le dernier endroit où une variable a été utilisée ainsi
+        que la fin de la portée de la fonction pour déconstruire et désallouer une ressource.
+
+        On dira pour cette déconstruction et désallocation que la variable est "jetée" (en anglais **dropped**).
+
+        Détails de la mémoire:
+        * Rust ne possède pas de ramasse-miettes (en anglais garbage collector)
+        * Cela est également connu sous le nom de RAII (l'acquisition d'une ressource est une initialisation) en C ++.
+      code: https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&code=struct%20Foo%20%7B%0A%20%20%20%20x%3A%20i32%2C%0A%7D%0A%0Afn%20main()%20%7B%0A%20%20%20%20let%20foo_a%20%3D%20Foo%20%7B%20x%3A%2042%20%7D%3B%0A%20%20%20%20let%20foo_b%20%3D%20Foo%20%7B%20x%3A%2013%20%7D%3B%0A%0A%20%20%20%20println!(%22%7B%7D%22%2C%20foo_a.x)%3B%0A%20%20%20%20%2F%2F%20la%20variable%20foo_a%20est%20jet%C3%A9e%20ici%20car%20elle%20n'est%20%0A%20%20%20%20%2F%2F%20plus%20utilis%C3%A9e%20apr%C3%A8s%20cet%20endroit%20du%20code%0A%0A%20%20%20%20println!(%22%7B%7D%22%2C%20foo_b.x)%3B%0A%20%20%20%20%2F%2F%20la%20variable%20foo_b%20est%20jet%C3%A9e%20ici%20car%20la%20port%C3%A9e%0A%20%20%20%20%2F%2F%20de%20la%20fonction%20prend%20fin%0A%7D%0A
+    ie:
+      title: Gerentie de Ressurses Basat sur Cadre (Scope)
+      content_markdown: |
+        Rust usa li final loc de usation o li fine del cadre de un function quam li loc por deconstructer e dealocar 
+        un ressurse. On nomina ti deconstruction e dealocation un "cade" (**drop**).
+
+        Detallies pri memorie:
+        * Rust ne possede jettallia-colection (garbage collection).
+        * Tis qui save C++ va conosser ti concepte quam Resource Aquisition Is Initialization ( RAII ).
+      code: https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&code=struct%20Foo%20%7B%0A%20%20%20%20x%3A%20i32%2C%0A%7D%0A%0Afn%20main()%20%7B%0A%20%20%20%20let%20foo_a%20%3D%20Foo%20%7B%20x%3A%2042%20%7D%3B%0A%20%20%20%20let%20foo_b%20%3D%20Foo%20%7B%20x%3A%2013%20%7D%3B%0A%0A%20%20%20%20println!(%22%7B%7D%22%2C%20foo_a.x)%3B%0A%20%20%20%20%2F%2F%20foo_a%20cade%20ci%20pro%20que%20on%20ne%20plu%20usa%20it%0A%20%20%20%20%2F%2F%20pos%20ciloc%0A%0A%20%20%20%20println!(%22%7B%7D%22%2C%20foo_b.x)%3B%0A%20%20%20%20%2F%2F%20foo_b%20cade%20ci%20pro%20que%20it%20es%20li%20fine%0A%20%20%20%20%2F%2F%20del%20cadre%20del%20function%0A%7D%0A
+    pt-br:
+      title: Gerenciamento de Recursos Baseado em Escopo
+      content_markdown: |
+        O Rust usa o último local de utilização ou o final do escopo da função para desconstruir e desalocar um recurso.
+
+        O termo para esta descontrução e desalocação é chamado **descarte** (ou *drop*).
+
+        Detalhes da memória:
+        * O Rust não tem garbage collection.
+        * Também conhecido por Aquisição de Recursos é Inicialização (sigla RAII,
+          em inglês) em C++.
+      code: https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&code=struct%20Foo%20%7B%0A%20%20%20%20x%3A%20i32%2C%0A%7D%0A%0Afn%20main()%20%7B%0A%20%20%20%20let%20foo_a%20%3D%20Foo%20%7B%20x%3A%2042%20%7D%3B%0A%20%20%20%20let%20foo_b%20%3D%20Foo%20%7B%20x%3A%2013%20%7D%3B%0A%0A%20%20%20%20println!(%22%7B%7D%22%2C%20foo_a.x)%3B%0A%20%20%20%20%2F%2F%20foo_a%20%C3%A9%20descartado%20aqui%20porque%20n%C3%A3o%20%C3%A9%20mais%0A%20%20%20%20%2F%2F%20usado%20depois%20deste%20lugar%0A%0A%20%20%20%20println!(%22%7B%7D%22%2C%20foo_b.x)%3B%0A%20%20%20%20%2F%2F%20foo_b%20%C3%A9%20descartado%20aqui%20porque%20%C3%A9%20o%20fim%0A%20%20%20%20%2F%2F%20do%20escopo%20da%20fun%C3%A7%C3%A3o%0A%7D%0A
+  - en:
+      title: Dropping is Heirarchal
+      content_markdown: |
+        When a struct is dropped, the struct itself is dropped first then it's children are dropped individually and so on.
+
+        Memory Details:
+        * By automically freeing memory Rust helps ensure that there are less memory leaks 
+        * Memory resources can only be dropped once.
+      code: https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&code=struct%20Bar%20%7B%0A%20%20%20%20x%3A%20i32%2C%0A%7D%0A%0Astruct%20Foo%20%7B%0A%20%20%20%20bar%3A%20Bar%2C%0A%7D%0A%0Afn%20main()%20%7B%0A%20%20%20%20let%20foo%20%3D%20Foo%20%7B%20bar%3A%20Bar%20%7B%20x%3A%2042%20%7D%20%7D%3B%0A%20%20%20%20println!(%22%7B%7D%22%2C%20foo.bar.x)%3B%0A%20%20%20%20%2F%2F%20foo%20is%20dropped%20first%0A%20%20%20%20%2F%2F%20then%20foo.bar%20is%20dropped%0A%7D%0A
+    fr:
+      title: La déconstruction et désallocation est hiérarchique
+      content_markdown: |
+        Lorsqu'une structure est jetée (déconstruite et désallouée), la structure elle-même est jetée en première puis
+        on jete ses enfants un par un et ainsi de suite.
+
+        Détails de la mémoire:
+        * En libérant automatiquement la mémoire, Rust aide à s'assurer qu'il y a moins de fuites de mémoire.
+        * Les ressources mémoire ne peuvent être déconstruites et désallouées qu'une seule fois.
+      code: https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&code=struct%20Bar%20%7B%0A%20%20%20%20x%3A%20i32%2C%0A%7D%0A%0Astruct%20Foo%20%7B%0A%20%20%20%20bar%3A%20Bar%2C%0A%7D%0A%0Afn%20main()%20%7B%0A%20%20%20%20let%20foo%20%3D%20Foo%20%7B%20bar%3A%20Bar%20%7B%20x%3A%2042%20%7D%20%7D%3B%0A%20%20%20%20println!(%22%7B%7D%22%2C%20foo.bar.x)%3B%0A%20%20%20%20%2F%2F%20foo%20est%20jet%C3%A9%20en%20premier%2C%0A%20%20%20%20%2F%2F%20viens%20ensuite%20le%20tour%20de%20foo.bar%0A%7D%0A
+    ie:
+      title: On Cade Secun Hierarchie
+      content_markdown: |
+        Quande un struct es lassat cader, su elementes infantal cade in prim.
+        Detallies pri memorie:
+        * Li automatic liberation memorie in Rust auxilia in esser cert que minu memorie-fugida va evenir
+        * Ressurses de memorie posse cader solmen un vez.
+      code: https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&code=struct%20Bar%20%7B%0A%20%20%20%20x%3A%20i32%2C%0A%7D%0A%0Astruct%20Foo%20%7B%0A%20%20%20%20bar%3A%20Bar%2C%0A%7D%0A%0Afn%20main()%20%7B%0A%20%20%20%20let%20foo%20%3D%20Foo%20%7B%20bar%3A%20Bar%20%7B%20x%3A%2042%20%7D%20%7D%3B%0A%20%20%20%20println!(%22%7B%7D%22%2C%20foo.bar.x)%3B%0A%20%20%20%20%2F%2F%20foo.bar%20cade%20in%20prim%0A%20%20%20%20%2F%2F%20pos%20quel%20anc%20foo%20cade%0A%7D%0A
+    pt-br:
+      title: O Descarte é Hierárquico
+      content_markdown: |
+        Quando uma estrutura é descartada, a estrutura em si é descartada primeiro,
+        depois os filhos são descartados individualmente e assim por diante.
+
+        Detalhes da Memória:
+        * Ao liberar automaticamente a memória, o Rust ajuda a garantir que haja menos
+          vazamentos de memória.
+        * Os recursos de memória só podem ser descartados uma vez.
+      code: https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&code=struct%20Bar%20%7B%0A%20%20%20%20x%3A%20i32%2C%0A%7D%0A%0Astruct%20Foo%20%7B%0A%20%20%20%20bar%3A%20Bar%2C%0A%7D%0A%0Afn%20main()%20%7B%0A%20%20%20%20let%20foo%20%3D%20Foo%20%7B%20bar%3A%20Bar%20%7B%20x%3A%2042%20%7D%20%7D%3B%0A%20%20%20%20println!(%22%7B%7D%22%2C%20foo.bar.x)%3B%0A%20%20%20%20%2F%2F%20foo%20%C3%A9%20descartado%20primeiro%0A%20%20%20%20%2F%2F%20e%20s%C3%B3%20ent%C3%A3o%20foo.bar%20%C3%A9%20descartado%0A%7D%0A
+  - en:
+      title: Moving Ownership
+      content_markdown: |
+        When a owner is passed as an argument to a function, ownership is moved to the function parameter.
+
+        After a **move** the variable in the original function can no longer be used.
+
+        Memory details:
+        * During a **move** the stack memory of the owners value is copied to the function call's parameter stack memory.
+      code: https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&code=struct%20Foo%20%7B%0A%20%20%20%20x%3A%20i32%2C%0A%7D%0A%0Afn%20do_something(f%3A%20Foo)%20%7B%0A%20%20%20%20println!(%22%7B%7D%22%2C%20f.x)%3B%0A%20%20%20%20%2F%2F%20f%20is%20dropped%20here%0A%7D%0A%0Afn%20main()%20%7B%0A%20%20%20%20let%20foo%20%3D%20Foo%20%7B%20x%3A%2042%20%7D%3B%0A%20%20%20%20%2F%2F%20foo%20is%20moved%20to%20do_something%0A%20%20%20%20do_something(foo)%3B%0A%20%20%20%20%2F%2F%20foo%20can%20no%20longer%20be%20used%0A%7D%0A
+    fr:
+      title: Transfert de propriétaire
+      content_markdown: |
+        Lorsqu'une ressource est passée en argument d'une fonction, le propriétaire de cette ressource devient le paramètre de la fonction.
+
+        Après cela, la variable passée en argument ne peut plus être utilisée, car la variable a été déplacée.
+
+        Détails de la mémoire:
+        * Lors du transfert de propriétaire, les éléments de la pile concernant la variable à déplacer sont copié sur la pile du paramètre de la fonction appelée.
+      code: https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&code=struct%20Foo%20%7B%0A%20%20%20%20x%3A%20i32%2C%0A%7D%0A%0Afn%20do_something(f%3A%20Foo)%20%7B%0A%20%20%20%20println!(%22%7B%7D%22%2C%20f.x)%3B%0A%20%20%20%20%2F%2F%20f%20est%20jet%C3%A9%20(d%C3%A9construit%20et%20d%C3%A9sallou%C3%A9)%20ici%0A%7D%0A%0Afn%20main()%20%7B%0A%20%20%20%20let%20foo%20%3D%20Foo%20%7B%20x%3A%2042%20%7D%3B%0A%20%20%20%20%0A%20%20%20%20%2F%2F%20foo%20est%20d%C3%A9plac%C3%A9%20vers%20do_something%0A%20%20%20%20do_something(foo)%3B%0A%20%20%20%20%2F%2F%20foo%20ne%20peut%20plus%20%C3%AAtre%20utilis%C3%A9%0A%7D%0A
+    ie:
+      title: Transferentie de Proprietá
+      content_markdown: |
+        Quande li proprietario es passat quam un argument a un function, li proprietá move se al parametre del function.
+        Pos un **move** on ne plu posse usar li variabile in li function original.
+        Detallies pri memorie:
+        * Durant un **move** li memorie sur li stack del valore del proprietario es copiat al memorie stack del parametre 
+        del vocator del function.
+      code: https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&code=struct%20Foo%20%7B%0A%20%20%20%20x%3A%20i32%2C%0A%7D%0A%0Afn%20do_something(f%3A%20Foo)%20%7B%0A%20%20%20%20println!(%22%7B%7D%22%2C%20f.x)%3B%0A%20%20%20%20%2F%2F%20f%20cade%20ci%0A%7D%0A%0Afn%20main()%20%7B%0A%20%20%20%20let%20foo%20%3D%20Foo%20%7B%20x%3A%2042%20%7D%3B%0A%20%20%20%20%2F%2F%20foo%20transfere%20se%20a%20do_something%0A%20%20%20%20do_something(foo)%3B%0A%20%20%20%20%2F%2F%20on%20ne%20plu%20posse%20usar%20foo%0A%7D%0A
+    pt-br:
+      title: Movendo a Propriedade
+      content_markdown: |
+        Quando um proprietário é passado como argumento para uma função, a propriedade é movida para o parâmetro da função.
+
+        Após um **movimento**, a variável na função original não pode mais ser usada.
+
+        Detalhes da memória:
+        * Durante uma **movimentação**, a memória da pilha do proprietário do valor é copiada para a memória da pilha dos parâmetros da função chamada.
+      code: https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&code=struct%20Foo%20%7B%0A%20%20%20%20x%3A%20i32%2C%0A%7D%0A%0Afn%20faz_alguma_coisa(f%3A%20Foo)%20%7B%0A%20%20%20%20println!(%22%7B%7D%22%2C%20f.x)%3B%0A%20%20%20%20%2F%2F%20f%20%C3%A9%20descartado%20aqui%0A%7D%0A%0Afn%20main()%20%7B%0A%20%20%20%20let%20foo%20%3D%20Foo%20%7B%20x%3A%2042%20%7D%3B%0A%20%20%20%20%2F%2F%20foo%20%C3%A9%20movido%20para%20faz_alguma_coisa%0A%20%20%20%20faz_alguma_coisa(foo)%3B%0A%20%20%20%20%2F%2F%20foo%20n%C3%A3o%20pode%20mais%20ser%20usado%0A%7D%0A
+  - en:
+      title: Returning Ownership
+      content_markdown: |
+        Ownership can also be returned from a function.
+      code: https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&code=struct%20Foo%20%7B%0A%20%20%20%20x%3A%20i32%2C%0A%7D%0A%0Afn%20do_something()%20-%3E%20Foo%20%7B%0A%20%20%20%20Foo%20%7B%20x%3A%2042%20%7D%0A%20%20%20%20%2F%2F%20ownership%20is%20moved%20out%0A%7D%0A%0Afn%20main()%20%7B%0A%20%20%20%20let%20foo%20%3D%20do_something()%3B%0A%20%20%20%20%2F%2F%20foo%20becomes%20the%20owner%0A%20%20%20%20%2F%2F%20foo%20is%20dropped%20because%20of%20end%20of%20function%20scope%0A%7D%0A
+
+    fr:
+      title: Retourner l'accès à une ressource
+      content_markdown: |
+        Une fonction peut retourner l'accès à une ressource.
+      code: https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&code=struct%20Foo%20%7B%0A%20%20%20%20x%3A%20i32%2C%0A%7D%0A%0Afn%20do_something()%20-%3E%20Foo%20%7B%0A%20%20%20%20Foo%20%7B%20x%3A%2042%20%7D%0A%20%20%20%20%2F%2F%20Le%20propri%C3%A9taire%20de%20la%20structure%20Foo%20d%C3%A9m%C3%A9nage%0A%20%20%20%20%2F%2F%20%C3%A0%20l'ext%C3%A9rieur%20de%20la%20fonction.%0A%7D%0A%0Afn%20main()%20%7B%0A%20%20%20%20let%20foo%20%3D%20do_something()%3B%0A%20%20%20%20%2F%2F%20foo%20devient%20le%20nouveau%20propri%C3%A9taire.%0A%20%20%20%20%2F%2F%20foo%20est%20jet%C3%A9%20(d%C3%A9construit%20et%20d%C3%A9sallou%C3%A9)%20ici%20car%20la%20port%C3%A9e%20de%20la%20%0A%20%20%20%20%2F%2F%20fonction%20main%20se%20termine.%0A%7D%0A
+
+    ie:
+      title: Retornar Proprietá
+      content_markdown: |
+        On posse anc retornar proprietá tra un function.
+      code: https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&code=struct%20Foo%20%7B%0A%20%20%20%20x%3A%20i32%2C%0A%7D%0A%0Afn%20do_something()%20-%3E%20Foo%20%7B%0A%20%20%20%20Foo%20%7B%20x%3A%2042%20%7D%0A%20%20%20%20%2F%2F%20li%20propriet%C3%A1%20exea%20ci%0A%7D%0A%0Afn%20main()%20%7B%0A%20%20%20%20let%20foo%20%3D%20do_something()%3B%0A%20%20%20%20%2F%2F%20foo%20deveni%20li%20proprietario%0A%20%20%20%20%2F%2F%20foo%20cade%20pro%20que%20it%20es%20li%20fine%20del%20cadre%20del%20function%0A%7D%0A
+    pt-br:
+      title: Retornando a Propriedade
+      content_markdown: |
+        A propriedade também pode ser retornada de uma função.
+      code: https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&code=struct%20Foo%20%7B%0A%20%20%20%20x%3A%20i32%2C%0A%7D%0A%0Afn%20do_something()%20-%3E%20Foo%20%7B%0A%20%20%20%20Foo%20%7B%20x%3A%2042%20%7D%0A%20%20%20%20%2F%2F%20a%20propriedade%20%C3%A9%20retornada%0A%7D%0A%0Afn%20main()%20%7B%0A%20%20%20%20let%20foo%20%3D%20do_something()%3B%0A%20%20%20%20%2F%2F%20foo%20se%20torna%20o%20propriet%C3%A1rio%0A%20%20%20%20%2F%2F%20foo%20%C3%A9%20descartado%20por%20causa%20do%20fim%20do%20escopo%20da%20fun%C3%A7%C3%A3o%0A%7D%0A
+  - en:
+      title: Borrowing Ownership with References
+      content_markdown: |
+        References allow us borrow access to a resource with the `&` operator.
+
+        References are also dropped like other resources.
+      code: https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&code=struct%20Foo%20%7B%0A%20%20%20%20x%3A%20i32%2C%0A%7D%0A%0Afn%20main()%20%7B%0A%20%20%20%20let%20foo%20%3D%20Foo%20%7B%20x%3A%2042%20%7D%3B%0A%20%20%20%20let%20f%20%3D%20%26foo%3B%0A%20%20%20%20println!(%22%7B%7D%22%2C%20f.x)%3B%0A%20%20%20%20%2F%2F%20f%20is%20dropped%20here%0A%20%20%20%20%2F%2F%20foo%20is%20dropped%20here%0A%7D%0A
+    fr:
+      title: S'approprier une ressource avec des références.
+      content_markdown: |
+        Les références nous permettent d'emprunter l'accès à une ressource grâce à l'opérateur `&`.
+
+        Les références sont également jetées (déconstruites et désallouées) comme les autres ressources.
+      code: https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&code=struct%20Foo%20%7B%0A%20%20%20%20x%3A%20i32%2C%0A%7D%0A%0Afn%20main()%20%7B%0A%20%20%20%20let%20foo%20%3D%20Foo%20%7B%20x%3A%2042%20%7D%3B%0A%20%20%20%20let%20f%20%3D%20%26foo%3B%0A%20%20%20%20println!(%22%7B%7D%22%2C%20f.x)%3B%0A%20%20%20%20%2F%2F%20f%20et%20foo%20sont%20jet%C3%A9s%20ici%0A%7D%0A
+    ie:
+      title: Pruntar Proprietá con Referenties
+      content_markdown: |
+        Con referenties noi posse prunta accesse a un ressurse con li operator `&`.
+
+        Referenties cade in Rust just quam omni altri ressurses.
+      code: https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&code=struct%20Foo%20%7B%0A%20%20%20%20x%3A%20i32%2C%0A%7D%0A%0Afn%20main()%20%7B%0A%20%20%20%20let%20foo%20%3D%20Foo%20%7B%20x%3A%2042%20%7D%3B%0A%20%20%20%20let%20f%20%3D%20%26foo%3B%0A%20%20%20%20println!(%22%7B%7D%22%2C%20f.x)%3B%0A%20%20%20%20%2F%2F%20f%20cade%20ci%0A%20%20%20%20%2F%2F%20foo%20cade%20ci%0A%7D%0A
+    pt-br:
+      title: Emprestando Propriedade com Referências
+      content_markdown: |
+        As referências nos permitem emprestar o acesso a um recurso com o operador `&`.
+
+        As referências também são descartadas do mesmo jeito que os outros recursos.
+      code: https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&code=struct%20Foo%20%7B%0A%20%20%20%20x%3A%20i32%2C%0A%7D%0A%0Afn%20main()%20%7B%0A%20%20%20%20let%20foo%20%3D%20Foo%20%7B%20x%3A%2042%20%7D%3B%0A%20%20%20%20let%20f%20%3D%20%26foo%3B%0A%20%20%20%20println!(%22%7B%7D%22%2C%20f.x)%3B%0A%20%20%20%20%2F%2F%20f%20%C3%A9%20descartado%20aqui%0A%20%20%20%20%2F%2F%20foo%20%C3%A9%20descartado%20aqui%0A%7D%0A
+  - en:
+      title: Borrowing Mutable Ownership with References
+      content_markdown: |
+        We can also borrow mutable access to a resource with the `&mut` operator.
+
+        A resource owner cannot be moved or modified while mutably borrowed.
+
+        Memory detail:
+        * Rust prevents having two ways to mutate an owned value because it introduces the possibility of a data race.
+      code: https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&code=struct%20Foo%20%7B%0A%20%20%20%20x%3A%20i32%2C%0A%7D%0A%0Afn%20do_something(f%3A%20Foo)%20%7B%0A%20%20%20%20println!(%22%7B%7D%22%2C%20f.x)%3B%0A%20%20%20%20%2F%2F%20f%20is%20dropped%20here%0A%7D%0A%0Afn%20main()%20%7B%0A%20%20%20%20let%20mut%20foo%20%3D%20Foo%20%7B%20x%3A%2042%20%7D%3B%0A%20%20%20%20let%20f%20%3D%20%26mut%20foo%3B%0A%0A%20%20%20%20%2F%2F%20FAILURE%3A%20do_something(foo)%20would%20fail%20because%0A%20%20%20%20%2F%2F%20foo%20cannot%20be%20moved%20while%20mutably%20borrowed%0A%0A%20%20%20%20%2F%2F%20FAILURE%3A%20foo.x%20%3D%2013%3B%20would%20fail%20here%20because%0A%20%20%20%20%2F%2F%20foo%20is%20not%20modifiable%20while%20mutably%20borrowed%0A%0A%20%20%20%20f.x%20%3D%2013%3B%0A%20%20%20%20%2F%2F%20f%20is%20dropped%20here%20because%20its%20no%20longer%20used%20after%20this%20point%0A%20%20%20%20%0A%20%20%20%20println!(%22%7B%7D%22%2C%20foo.x)%3B%0A%20%20%20%20%0A%20%20%20%20%2F%2F%20this%20works%20now%20because%20there%20all%20mutable%20references%20were%20dropped%0A%20%20%20%20foo.x%20%3D%207%3B%0A%20%20%20%20%0A%20%20%20%20%2F%2F%20move%20foo%27s%20ownership%20to%20a%20function%0A%20%20%20%20do_something(foo)%3B%0A%7D%0A
+
+    fr:
+      title: S'approprier une ressource mutable avec des références
+      content_markdown: |
+        On peut créer une référence mutable qui permet d'emprunter l'accès à une ressource mutable (celles-ci sont
+        créées avec le mot-clé **let**) en utilisant l'opérateur `&mut`.
+
+        Le propriétaire d'une ressource ne peut pas changer lorsque la ressource
+        est empruntée avec une référence mutable.
+
+        Détails de la mémoire:
+        * Rust empêche d'avoir deux moyens de modifier une valeur car cela introduirait 
+        des problèmes concurrentiels d'accès aux données.
+      code: https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&code=struct%20Foo%20%7B%0A%20%20%20%20x%3A%20i32%2C%0A%7D%0A%0Afn%20do_something(f%3A%20Foo)%20%7B%0A%20%20%20%20println!(%22%7B%7D%22%2C%20f.x)%3B%0A%20%20%20%20%2F%2F%20f%20est%20jet%C3%A9%20(d%C3%A9construit%20et%20d%C3%A9sallou%C3%A9)%20ici.%0A%7D%0A%0Afn%20main()%20%7B%0A%20%20%20%20let%20mut%20foo%20%3D%20Foo%20%7B%20x%3A%2042%20%7D%3B%0A%20%20%20%20let%20f%20%3D%20%26mut%20foo%3B%0A%0A%20%20%20%20%2F%2F%20ECHEC%3A%20l'appel%20%C3%A0%20la%20fonction%20do_something(foo)%20%C3%A9chouerait.%0A%20%20%20%20%2F%2F%20En%20effet%2C%20le%20propri%C3%A9taire%20de%20foo%20ne%20peut%20pas%20%C3%AAtre%20d%C3%A9plac%C3%A9%20vers%0A%20%20%20%20%2F%2F%20le%20param%C3%A8tre%20de%20la%20fonction%20car%20f%20l'a%20emprunt%C3%A9%20avec%20l'op%C3%A9rateur%20%26mut.%0A%0A%20%20%20%20%2F%2F%20ECHEC%3A%20l'instruction%20%60foo.x%20%3D%2013%3B%60%20%C3%A9chouerait.%20En%20effet%20foo%20ne%20peut%20pas%20%0A%20%20%20%20%2F%2F%20%C3%AAtre%20modifi%C3%A9%20car%20f%20l'a%20emprunt%C3%A9%20avec%20une%20r%C3%A9f%C3%A9rence%20mutable.%0A%0A%20%20%20%20f.x%20%3D%2013%3B%0A%20%20%20%20%2F%2F%20f%20est%20jet%C3%A9%20ici%20car%20il%20n'est%20plus%20utilis%C3%A9%20par%20la%20suite.%0A%20%20%20%20%0A%20%20%20%20println!(%22%7B%7D%22%2C%20foo.x)%3B%0A%20%20%20%20%0A%20%20%20%20%2F%2F%20On%20a%20le%20droit%20car%20l'unique%20r%C3%A9f%C3%A9rence%20mutable%20f%20a%20%C3%A9t%C3%A9%20jet%C3%A9e.%0A%20%20%20%20foo.x%20%3D%207%3B%0A%20%20%20%20%0A%20%20%20%20%2F%2F%20foo%20change%20une%20fois%20de%20plus%20de%20propri%C3%A9taire!%0A%20%20%20%20%2F%2F%20Le%20nouveau%20propri%C3%A9taire%20de%20foo%20est%20le%20param%C3%A8tre%0A%20%20%20%20%2F%2F%20de%20la%20fonction%20do_something.%0A%20%20%20%20do_something(foo)%3B%0A%7D%0A
+
+    ie:
+      title: Pruntation de Mutabil Proprietá con Referenties
+      content_markdown: |
+        Noi posse anc pruntar accesse mutabil a un ressurse con li operator `&mut`.
+
+        Un proprietario de un ressurse ne posse mover o modificar se durant que it es pruntat mutabilmen.
+
+        Detallies pri memorie:
+        * Rust preveni li duplic mutabil pruntation de un valore pro que con to on have li possibilitá de data-concurrentie.
+      code: https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&code=struct%20Foo%20%7B%0A%20%20%20%20x%3A%20i32%2C%0A%7D%0A%0Afn%20far_alquo(f%3A%20Foo)%20%7B%0A%20%20%20%20println!(%22%7B%7D%22%2C%20f.x)%3B%0A%20%20%20%20%2F%2F%20f%20cade%20ci%0A%7D%0A%0Afn%20main()%20%7B%0A%20%20%20%20let%20mut%20foo%20%3D%20Foo%20%7B%20x%3A%2042%20%7D%3B%0A%20%20%20%20let%20f%20%3D%20%26mut%20foo%3B%0A%0A%20%20%20%20%2F%2F%20FALLIMENT%3A%20far_alquo%20vell%20fallir%20pro%20quo%0A%20%20%20%20%2F%2F%20foo%20ne%20posse%20mover%20durant%20que%20it%20es%20pruntat%20mutabilmen%0A%0A%20%20%20%20%2F%2F%20FALLIMENT%3A%20foo.x%20%3D%2013%3B%20vell%20fallir%20ci%20pro%20que%0A%20%20%20%20%2F%2F%20on%20ne%20posse%20modificar%20foo%20durant%20que%20it%20es%20pruntat%20mutabilmen%0A%0A%20%20%20%20f.x%20%3D%2013%3B%0A%20%20%20%20%2F%2F%20f%20cade%20ci%20pro%20que%20on%20ne%20usa%20it%20plu%20pos%20ciloc%0A%20%20%20%20%0A%20%20%20%20println!(%22%7B%7D%22%2C%20foo.x)%3B%0A%20%20%20%20%0A%20%20%20%20%2F%2F%20nu%20it%20functiona%20pro%20quo%20omni%20referenties%20mutabil%20ha%20cadet%0A%20%20%20%20foo.x%20%3D%207%3B%0A%20%20%20%20%0A%20%20%20%20%2F%2F%20transferer%20li%20propriet%C3%A1%20de%20foo%20a%20un%20function%0A%20%20%20%20far_alquo(foo)%3B%0A%7D%0A
+    pt-br:
+      title: Emprestando Propriedades Mutáveis Usando Referências
+      content_markdown: |
+        Também podemos emprestar um acesso mutável a um recurso usando o operador `& mut`.
+
+        O proprietário de um recurso não pode ser movido ou modificado durante um empréstimo mutável.
+
+        Detalhes de memória:
+        * O Rust evita ter duas maneiras de alterar um valor que tenha um dono, pois
+        introduz a possibilidade de uma corrida de dados.
+      code: https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&code=struct%20Foo%20%7B%0A%20%20%20%20x%3A%20i32%2C%0A%7D%0A%0Afn%20faz_alguma_coisa(f%3A%20Foo)%20%7B%0A%20%20%20%20println!(%22%7B%7D%22%2C%20f.x)%3B%0A%20%20%20%20%2F%2F%20f%20%C3%A9%20descartado%20aqui%0A%7D%0A%0Afn%20main()%20%7B%0A%20%20%20%20let%20mut%20foo%20%3D%20Foo%20%7B%20x%3A%2042%20%7D%3B%0A%20%20%20%20let%20f%20%3D%20%26mut%20foo%3B%0A%0A%20%20%20%20%2F%2F%20FAILURE%3A%20faz_alguma_coisa(foo)%20ir%C3%A1%20falhar%20porque%0A%20%20%20%20%2F%2F%20foo%20n%C3%A3o%20pode%20ser%20movida%20durante%20um%20empr%C3%A9stimo%20mut%C3%A1vel%0A%0A%20%20%20%20%2F%2F%20FAILURE%3A%20foo.x%20%3D%2013%3B%20ir%C3%A1%20falhar%20porque%0A%20%20%20%20%2F%2F%20foo%20n%C3%A3o%20%C3%A9%20modific%C3%A1vel%20durante%20um%20empr%C3%A9stimo%20mut%C3%A1vel%0A%0A%20%20%20%20f.x%20%3D%2013%3B%0A%20%20%20%20%2F%2F%20f%20%C3%A9%20descartado%20aqui%20por%20n%C3%A3o%20ser%20mais%20usado%20depois%20deste%20ponto%0A%20%20%20%20%0A%20%20%20%20println!(%22%7B%7D%22%2C%20foo.x)%3B%0A%20%20%20%20%0A%20%20%20%20%2F%2F%20isto%20aqui%20funciona%20agora%20porque%20todas%20as%20refer%C3%AAncias%20%0A%20%20%20%20%2F%2F%20mut%C3%A1veis%20foram%20descartadas%0A%20%20%20%20foo.x%20%3D%207%3B%0A%20%20%20%20%0A%20%20%20%20%2F%2F%20move%20a%20propriedade%20de%20foo%20para%20uma%20fun%C3%A7%C3%A3o%0A%20%20%20%20faz_alguma_coisa(foo)%3B%0A%7D%0A
+  - en:
+      title: Dereferencing
+      content_markdown: |
+        Using references, you can set the owner's value using the `*` operator.
+
+        You can also get a copy of owned value using the `*` operator (If the value can be copied. We will discuss copyable types in later chapters).
+      code: https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&code=fn%20main()%20%7B%0A%20%20%20%20let%20mut%20foo%20%3D%2042%3B%0A%20%20%20%20let%20f%20%3D%20%26mut%20foo%3B%0A%20%20%20%20let%20bar%20%3D%20*f%3B%20%2F%2F%20get%20a%20copy%20of%20the%20owner's%20value%0A%20%20%20%20*f%20%3D%2013%3B%20%20%20%20%20%20%2F%2F%20set%20the%20reference's%20owner's%20value%0A%20%20%20%20println!(%22%7B%7D%22%2C%20bar)%3B%0A%20%20%20%20println!(%22%7B%7D%22%2C%20foo)%3B%0A%7D%0A
+
+    fr:
+      title: Déréférencement
+      content_markdown: |
+        Avec une référence, on peut modifier la valeur avec l'opérateur de déréférencement `*`.
+
+        Tu peux également obtenir une copie de la valeur en utilisant également l'opérateur de déférencement `*`
+        (à condition que la valeur puisse être copiée, nous discuterons des types qui peuvent l'être
+        dans un prochain chapitre).
+      code: https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&code=fn%20main()%20%7B%0A%20%20%20%20let%20mut%20foo%20%3D%2042%3B%0A%20%20%20%20let%20f%20%3D%20%26mut%20foo%3B%0A%20%20%20%20let%20bar%20%3D%20*f%3B%20%2F%2F%20obtient%20une%20copie%20de%20la%20valeur%0A%20%20%20%20*f%20%3D%2013%3B%20%20%20%20%20%20%2F%2F%20change%20la%20valeur%20originelle%20mais%20pas%20celle%20de%20la%20copie!%0A%20%20%20%20println!(%22%7B%7D%22%2C%20bar)%3B%0A%20%20%20%20println!(%22%7B%7D%22%2C%20foo)%3B%0A%7D%0A
+
+    ie:
+      title: Dereferentiar
+      content_markdown: |
+        Con referenties, on posse etablisser li valore del proprietario con li operator `*`.
+
+        On posse anc obtener un copie del propri valore con li operator `*`
+        (si li valore es copiabil. Noi va parlar pri tipes copiabil in li capitules a sequer.)
+      code: https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&code=fn%20main()%20%7B%0A%20%20%20%20let%20mut%20foo%20%3D%2042%3B%0A%20%20%20%20let%20f%20%3D%20%26mut%20foo%3B%0A%20%20%20%20let%20bar%20%3D%20*f%3B%20%2F%2F%20obtenir%20un%20copie%20del%20valore%20del%20proprietario%0A%20%20%20%20*f%20%3D%2013%3B%20%20%20%20%20%20%2F%2F%20etablisser%20li%20valore%20del%20proprietario%20del%20referentie%0A%20%20%20%20println!(%22%7B%7D%22%2C%20bar)%3B%0A%20%20%20%20println!(%22%7B%7D%22%2C%20foo)%3B%0A%7D%0A
+    pt-br:
+      title: Desreferenciando
+      content_markdown: |
+        Usando referências você pode definir o valor do proprietário usando o operador `*`.
+
+        Você também pode obter uma cópia do valor de propriedade usando o operador `*` 
+        (Se o valor puder ser copiado. Discutiremos tipos copiáveis nos próximos 
+        capítulos).
+      code: https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&code=fn%20main()%20%7B%0A%20%20%20%20let%20mut%20foo%20%3D%2042%3B%0A%20%20%20%20let%20f%20%3D%20%26mut%20foo%3B%0A%20%20%20%20let%20bar%20%3D%20*f%3B%20%2F%2F%20pega%20uma%20c%C3%B3pia%20do%20propriet%C3%A1rio%20do%20valor%0A%20%20%20%20*f%20%3D%2013%3B%20%20%20%20%20%20%2F%2F%20atribue%20%C3%A0%20refer%C3%AAncia%20do%20propriet%C3%A1rio%20do%20valor%0A%20%20%20%20println!(%22%7B%7D%22%2C%20bar)%3B%0A%20%20%20%20println!(%22%7B%7D%22%2C%20foo)%3B%0A%7D%0A
+  - en:
+      title: Passing Around Borrowed Data
+      content_markdown: |
+        Rust's rules for references might best be summarized by:
+
+        * Rust only allows there to be one mutable reference **or** multiple non-mutable references **but not both**
+        * A reference must never **live longer** than its owner.
+
+        This doesn't tend to be a problem when passing around references to functions.
+
+        Memory details:
+        * The first rule of references prevents data races. What's a data race? A data race when reading from data has the possibility of being out of sync due to the existance of a writer to the data at the same time. This happens often in multi-threaded programming.
+        * The second rule of references prevents the misuse of references that refer to non-existant data ( called dangling pointers in C ).
+      code: https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&code=struct%20Foo%20%7B%0A%20%20%20%20x%3A%20i32%2C%0A%7D%0A%0Afn%20do_something(f%3A%20%26mut%20Foo)%20%7B%0A%20%20%20%20f.x%20%2B%3D%201%3B%0A%20%20%20%20%2F%2F%20mutable%20reference%20f%20is%20dropped%20here%0A%7D%0A%0Afn%20main()%20%7B%0A%20%20%20%20let%20mut%20foo%20%3D%20Foo%20%7B%20x%3A%2042%20%7D%3B%0A%20%20%20%20do_something(%26mut%20foo)%3B%0A%20%20%20%20%2F%2F%20because%20all%20mutable%20references%20are%20dropped%20within%0A%20%20%20%20%2F%2F%20the%20function%20do_something.%20We%20can%20create%20another.%0A%20%20%20%20do_something(%26mut%20foo)%3B%0A%20%20%20%20%2F%2F%20foo%20is%20dropped%20here%0A%7D%0A
+    fr:
+      title: Transfert de données empruntées
+      content_markdown: |
+        Les règles de Rust en ce qui concerne les références peuvent être résumées en:
+
+        * Rust n'autorise qu'une seule référence mutable (mot-clé `&mut`) ou plusieurs références immuables **mais pas les deux**.
+        * Une référence ne doit pas **vivre plus longtemps** que son propriétaire. 
+
+        Cela n'est pas un problème lorsque que la référence est passée en paramètre
+        d'une fonction puisque la référence n'exite que dans la portée de la fonction.
+
+        Détails de la mémoire:
+        * La première règle empêche les accès concurrentiels. On parle d'accès concurrentiels lorsque plusieurs acteurs
+        essayent d'accéder à une ressource en même temps. Par exemple j'essaie de lire une valeur mais quelqu'un d'autre
+        la modifie en même temps, résultat je ne sais pas si je lis la valeur avant ou après modification. Cela arrive
+        fréquemment dans les programme utilisant plusieurs fils d'exécution (en anglais threads).
+        * La deuxième règle nous évite la mauvaise utilisation de références qui pourrait faire référence à une donnée
+        inexistante (les fameux **dandling pointers** du language C).
+      code: https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&code=struct%20Foo%20%7B%0A%20%20%20%20x%3A%20i32%2C%0A%7D%0A%0Afn%20do_something(f%3A%20%26mut%20Foo)%20%7B%0A%20%20%20%20f.x%20%2B%3D%201%3B%0A%20%20%20%20%2F%2F%20La%20r%C3%A9f%C3%A9rence%20mutable%20f%20est%20jet%C3%A9e%20(d%C3%A9construite%20et%20d%C3%A9sallou%C3%A9e)%20ici.%0A%7D%0A%0Afn%20main()%20%7B%0A%20%20%20%20let%20mut%20foo%20%3D%20Foo%20%7B%20x%3A%2042%20%7D%3B%0A%20%20%20%20do_something(%26mut%20foo)%3B%0A%20%20%20%20%0A%20%20%20%20%2F%2F%20Etant%20donn%C3%A9%20que%20la%20r%C3%A9f%C3%A9rence%20modifiable%20foo%20n%27existe%20uniquement%20dans%0A%20%20%20%20%2F%2F%20la%20fonction%20do_something%2C%20on%20peut%20en%20cr%C3%A9er%20une%20autre.%0A%20%20%20%20do_something(%26mut%20foo)%3B%0A%20%20%20%20%2F%2F%20foo%20est%20jet%C3%A9%20ici.%0A%7D%0A
+    ie:
+      title: Transferer Pruntat Data
+      content_markdown: |
+        On posse curtmen resumar li regules de Rust pri referenties quam seque:
+          
+        * **Un** mutabil referentie es permisset, **o** multiplic non-mutabil referenties, **ma ne ambi**
+        * Un referentie ne mey viver plu long quam su proprietario.
+          
+        To por li pluparte ne es un problema quande on transfere referenties a functiones.
+          
+        Detallies pri memorie:
+        * Li unesim regul de referenties preveni data-concurrentie. Quo es to? Data-concurrentie eveni quande on lee data con li possibilitá de un scritor al sam data in li sam moment. To eveni sovente in multi-filat programmation.
+        * Li duesim regul de referenties preveni li misusa de referenties referent a data quel ne existe ( nominat dangling pointers in C ).
+      code: https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&code=struct%20Foo%20%7B%0A%20%20%20%20x%3A%20i32%2C%0A%7D%0A%0Afn%20far_alquo(f%3A%20%26mut%20Foo)%20%7B%0A%20%20%20%20f.x%20%2B%3D%201%3B%0A%20%20%20%20%2F%2F%20mutabil%20referentie%20f%20cade%20ci%0A%7D%0A%0Afn%20main()%20%7B%0A%20%20%20%20let%20mut%20foo%20%3D%20Foo%20%7B%20x%3A%2042%20%7D%3B%0A%20%20%20%20far_alquo(%26mut%20foo)%3B%0A%20%20%20%20%2F%2F%20nam%20omni%20mutabil%20referenties%20cade%20intra%20%0A%20%20%20%20%2F%2F%20li%20function%20far_alquo.%20Noi%20posse%20crear%20un%20in%20plu.%0A%20%20%20%20far_alquo(%26mut%20foo)%3B%0A%20%20%20%20%2F%2F%20foo%20cade%20ci%0A%7D%0A
+    pt-br:
+      title: Passando Dados Emprestados
+      content_markdown: |
+        As regras do Rust para referências podem ser melhor resumidas assim:
+
+        * O Rust permite que haja apenas uma referência mutável **ou** múltiplas
+          referências não-mutáveis, **mas não ambas**.
+        * Uma referência nunca deve **viver mais** do que o seu proprietário.
+
+        Isso não costuma ser um problema ao passar referências a funções.
+
+        Detalhes da memória:
+        * A primeira regra das referências previnem as corridas de dados. O que é uma corrida de dados? Uma corrida de dados acontece quando, na leitura dos dados, temos a possibilidade de conflito com a existência de outras escritas de dados ao mesmo tempo. Isso acontece frequentemente na programação multithread.
+        * A segunda regra de referências evita o uso indevido de referências que se referem a dados inexistentes (chamados ponteiros pendentes em C).
+      code: https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&code=struct%20Foo%20%7B%0A%20%20%20%20x%3A%20i32%2C%0A%7D%0A%0Afn%20faz_alguma_coisa(f%3A%20%26mut%20Foo)%20%7B%0A%20%20%20%20f.x%20%2B%3D%201%3B%0A%20%20%20%20%2F%2F%20a%20refer%C3%AAncia%20mut%C3%A1vel%20f%20%C3%A9%20descartada%20aqui%0A%7D%0A%0Afn%20main()%20%7B%0A%20%20%20%20let%20mut%20foo%20%3D%20Foo%20%7B%20x%3A%2042%20%7D%3B%0A%20%20%20%20faz_alguma_coisa(%26mut%20foo)%3B%0A%20%20%20%20%2F%2F%20porque%20todas%20as%20refer%C3%AAncias%20mut%C3%A1veis%20s%C3%A3o%20descartadas%20dentro%0A%20%20%20%20%2F%2F%20da%20fun%C3%A7%C3%A3o%20faz_alguma_coisa.%20Ent%C3%A3o%20podemos%20criar%20outra%20refer%C3%AAncia.%0A%20%20%20%20faz_alguma_coisa(%26mut%20foo)%3B%0A%20%20%20%20%2F%2F%20foo%20%C3%A9%20descartado%20aqui%0A%7D%0A
+  - en:
+      title: References Of References
+      content_markdown: |
+        References can even be used on pieces of references.
+      code: https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&code=struct%20Foo%20%7B%0A%20%20%20%20x%3A%20i32%2C%0A%7D%0A%0Afn%20do_something(a%3A%20%26Foo)%20-%3E%20%26i32%20%7B%0A%20%20%20%20return%20%26a.x%3B%0A%7D%0A%0Afn%20main()%20%7B%0A%20%20%20%20let%20mut%20foo%20%3D%20Foo%20%7B%20x%3A%2042%20%7D%3B%0A%20%20%20%20let%20x%20%3D%20%26mut%20foo.x%3B%0A%20%20%20%20*x%20%3D%2013%3B%0A%20%20%20%20%2F%2F%20x%20is%20dropped%20here%20allow%20us%20to%20create%20a%20non-mutable%20reference%0A%20%20%20%20let%20y%20%3D%20do_something(%26foo)%3B%0A%20%20%20%20println!(%22%7B%7D%22%2C%20y)%3B%0A%20%20%20%20%2F%2F%20y%20is%20dropped%20here%0A%20%20%20%20%2F%2F%20foo%20is%20dropped%20here%0A%7D%0A
+    fr:
+      title: Réferences de réferences
+      content_markdown: |
+        Une référence peut faire référence à une autre.
+      code: https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&code=struct%20Foo%20%7B%0A%20%20%20%20x%3A%20i32%2C%0A%7D%0A%0Afn%20do_something(a%3A%20%26Foo)%20-%3E%20%26i32%20%7B%0A%20%20%20%20return%20%26a.x%3B%0A%7D%0A%0Afn%20main()%20%7B%0A%20%20%20%20let%20mut%20foo%20%3D%20Foo%20%7B%20x%3A%2042%20%7D%3B%0A%20%20%20%20let%20x%20%3D%20%26mut%20foo.x%3B%0A%20%20%20%20*x%20%3D%2013%3B%0A%20%20%20%20%2F%2F%20x%20est%20jet%C3%A9%20(d%C3%A9construit%20et%20d%C3%A9allou%C3%A9)%20ici%2C%20ce%20qui%20nous%20autorise%0A%20%20%20%20%2F%2F%20%C3%A0%20cr%C3%A9er%20une%20r%C3%A9f%C3%A9rence%20immuable.%0A%20%20%20%20let%20y%20%3D%20do_something(%26foo)%3B%0A%20%20%20%20println!(%22%7B%7D%22%2C%20y)%3B%0A%20%20%20%20%2F%2F%20y%20est%20jet%C3%A9%20ici.%0A%20%20%20%20%2F%2F%20foo%20est%20jet%C3%A9%20ici.%0A%7D%0A
+    ie:
+      title: Referenties de Referenties
+      content_markdown: |
+        On mem posse usar referenties sur referenties.
+      code: https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&code=struct%20Foo%20%7B%0A%20%20%20%20x%3A%20i32%2C%0A%7D%0A%0Afn%20far_alquo(a%3A%20%26Foo)%20-%3E%20%26i32%20%7B%0A%20%20%20%20return%20%26a.x%3B%0A%7D%0A%0Afn%20main()%20%7B%0A%20%20%20%20let%20mut%20foo%20%3D%20Foo%20%7B%20x%3A%2042%20%7D%3B%0A%20%20%20%20let%20x%20%3D%20%26mut%20foo.x%3B%0A%20%20%20%20*x%20%3D%2013%3B%0A%20%20%20%20%2F%2F%20x%20cade%20ci%20por%20que%20noi%20mey%20posser%20crear%20un%20referentie%20%C3%ADnmutabil%0A%20%20%20%20let%20y%20%3D%20far_alquo(%26foo)%3B%0A%20%20%20%20println!(%22%7B%7D%22%2C%20y)%3B%0A%20%20%20%20%2F%2F%20y%20cade%20ci%0A%20%20%20%20%2F%2F%20foo%20cade%20ci%0A%7D%0A
+    pt-br:
+      title: Referências de Referências
+      content_markdown: |
+        Referências podem ser usadas até mesmo em pedaços de referências.
+      code: https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&code=struct%20Foo%20%7B%0A%20%20%20%20x%3A%20i32%2C%0A%7D%0A%0Afn%20faz_alguma_coisa(a%3A%20%26Foo)%20-%3E%20%26i32%20%7B%0A%20%20%20%20return%20%26a.x%3B%0A%7D%0A%0Afn%20main()%20%7B%0A%20%20%20%20let%20mut%20foo%20%3D%20Foo%20%7B%20x%3A%2042%20%7D%3B%0A%20%20%20%20let%20x%20%3D%20%26mut%20foo.x%3B%0A%20%20%20%20*x%20%3D%2013%3B%0A%20%20%20%20%2F%2F%20x%20%C3%A9%20descartado%20aqui%20permitindo-nos%20criar%20uma%20refer%C3%AAncia%20n%C3%A3o%20mut%C3%A1vel%0A%20%20%20%20let%20y%20%3D%20faz_alguma_coisa(%26foo)%3B%0A%20%20%20%20println!(%22%7B%7D%22%2C%20y)%3B%0A%20%20%20%20%2F%2F%20y%20%C3%A9%20descartado%20aqui%0A%20%20%20%20%2F%2F%20foo%20%C3%A9%20descartado%20aqui%0A%7D%0A
+  - en:
+      title: Explicit Lifetimes
+      content_markdown: |
+        Even though Rust doesn't always show it in code, the compiler understands the lifetime of every variable and will attempt
+        to validate a reference never exists longer than its owner.
+
+        Functions can be explicit by parameterizing the function signature with symbols that help identify 
+        which parameters and return values share the same lifetime.
+
+        Lifetime specifiers always start with a `'` (e.g. `'a`, `'b`, `'c`)
+      code: https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&code=struct%20Foo%20%7B%0A%20%20%20%20x%3A%20i32%2C%0A%7D%0A%0A%2F%2F%20the%20parameter%20foo%20and%20return%20value%20share%20the%20same%20lifetime%0Afn%20do_something%3C'a%3E(foo%3A%20%26'a%20Foo)%20-%3E%20%26'a%20i32%20%7B%0A%20%20%20%20return%20%26foo.x%3B%0A%7D%0A%0Afn%20main()%20%7B%0A%20%20%20%20let%20mut%20foo%20%3D%20Foo%20%7B%20x%3A%2042%20%7D%3B%0A%20%20%20%20let%20x%20%3D%20%26mut%20foo.x%3B%0A%20%20%20%20*x%20%3D%2013%3B%0A%20%20%20%20%2F%2F%20x%20is%20dropped%20here%20allow%20us%20to%20create%20a%20non-mutable%20reference%0A%20%20%20%20let%20y%20%3D%20do_something(%26foo)%3B%0A%20%20%20%20println!(%22%7B%7D%22%2C%20y)%3B%0A%20%20%20%20%2F%2F%20y%20is%20dropped%20here%0A%20%20%20%20%2F%2F%20foo%20is%20dropped%20here%0A%7D%0A
+    fr:
+      title: Durée de vie explicite
+      content_markdown: |
+        Même si cela ne se voit pas, le compilateur porte une attention particulière à la durée de vie
+        de chaque variable et veillera à ce qu'une référence n'existe pas au delà de
+        l'existance de son propriétaire.
+
+        Avec Rust, on peut explicitement spécifier la durée de vie des paramètres d'une fonction.
+        Ceci permet à un ou plusieurs paramètres d'une fonction de partager la durée de vie de valeurs de retour.
+
+        Les spécifieurs de durée de vie commencent toujours par le symbole `'` (e.g. `'a`, `'b`, `'c`).
+      code: https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&code=struct%20Foo%20%7B%0A%20%20%20%20x%3A%20i32%2C%0A%7D%0A%0A%2F%2F%20Le%20param%C3%A8tre%20foo%20et%20la%20valeur%20de%20retour%20partage%0A%2F%2F%20la%20m%C3%AAme%20dur%C3%A9e%20de%20vie.%0Afn%20do_something%3C%27a%3E(foo%3A%20%26%27a%20Foo)%20-%3E%20%26%27a%20i32%20%7B%0A%20%20%20%20return%20%26foo.x%3B%0A%7D%0A%0Afn%20main()%20%7B%0A%20%20%20%20let%20mut%20foo%20%3D%20Foo%20%7B%20x%3A%2042%20%7D%3B%0A%20%20%20%20let%20x%20%3D%20%26mut%20foo.x%3B%0A%20%20%20%20*x%20%3D%2013%3B%0A%20%20%20%20%0A%20%20%20%20%2F%2F%20x%20est%20jet%C3%A9%20(d%C3%A9construit%20et%20d%C3%A9allou%C3%A9)%20ici%2C%20ce%20qui%20permet%20de%0A%20%20%20%20%2F%2F%20cr%C3%A9er%20une%20r%C3%A9f%C3%A9rence%20immuable.%0A%20%20%20%20let%20y%20%3D%20do_something(%26foo)%3B%0A%20%20%20%20println!(%22%7B%7D%22%2C%20y)%3B%0A%20%20%20%20%2F%2F%20y%20est%20jet%C3%A9%20ici.%0A%20%20%20%20%2F%2F%20foo%20est%20jet%C3%A9%20ici.%0A%7D%0A
+    ie:
+      title: Vive-témpores Explicit
+      content_markdown: |
+        Benque Rust ne sempre monstra it nos in li code, li compilator save li vive-témpor de chascun variabil e va provar validar
+        que referenties ne vive plu long quam lor proprietarios.
+
+        Un function posse esser explicit per parametrisar li function-signatura con simboles queles auxilia identificar
+        quel parametres e quel retorn-valores partiprende li sam vive-témpor.
+
+        Specificatores de vive-témpores sempre comensa con un `'` (e.g. `'a`, `'b`, `'c`)
+      code: https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&code=struct%20Foo%20%7B%0A%20%20%20%20x%3A%20i32%2C%0A%7D%0A%0A%2F%2F%20li%20parametre%20foo%20e%20retorn-valore%20partiprende%20li%20sam%20vive-t%C3%A9mpor%0A%0A%2F%2F%20(Benque%20por%20li%20pluparte%20on%20scri%20simplicmen%20%27a%2C%20%27b%2C%20%27c%2C%20etc.%2C%20on%0A%2F%2F%20posse%20scrir%20quocunc%20pos%20li%20%27%20%3A%20%27vive_tempor%2C%20%27long%2C%20%27curt%2C%20%0A%2F%2F%20%27unesim%2C%20%27duesim%20etc.%20es%20omnes%20possibil%20n%C3%B3mines%20por%20ili)%0Afn%20far_alquo%3C%27a%3E(foo%3A%20%26%27a%20Foo)%20-%3E%20%26%27a%20i32%20%7B%0A%20%20%20%20return%20%26foo.x%3B%0A%7D%0A%0Afn%20main()%20%7B%0A%20%20%20%20let%20mut%20foo%20%3D%20Foo%20%7B%20x%3A%2042%20%7D%3B%0A%20%20%20%20let%20x%20%3D%20%26mut%20foo.x%3B%0A%20%20%20%20*x%20%3D%2013%3B%0A%20%20%20%20%2F%2F%20x%20cade%20ci%20por%20possibilisar%20li%20creation%20de%20un%20%C3%ADnmutabil%20referentie%0A%20%20%20%20let%20y%20%3D%20far_alquo(%26foo)%3B%0A%20%20%20%20println!(%22%7B%7D%22%2C%20y)%3B%0A%20%20%20%20%2F%2F%20y%20cade%20ci%0A%20%20%20%20%2F%2F%20foo%20cade%20ci%0A%7D%0A
+    pt-br:
+      title: Tempo de Vida Explícito
+      content_markdown: |
+        Mesmo que o Rust nem sempre nos mostre no código, o compilador conhece o tempo de vida de cada variável e tentará validar uma referência que nunca deve existir por mais tempo que seu proprietário.
+
+        As funções podem ser explícitas parametrizando a assinatura da função com símbolos que ajudam a identificar quais parâmetros e valores de retorno compartilham a mesma tempo de vida.
+
+        Os especificadores de tempo de vida sempre começam com um `'` (por exemplo `'a`, `'b`, `'c`)
+      code: https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&code=struct%20Foo%20%7B%0A%20%20%20%20x%3A%20i32%2C%0A%7D%0A%0A%2F%2F%20o%20par%C3%A2metro%20foo%20e%20valor%20de%20retorno%20compartilham%20o%20mesmo%20tempo%20de%20vida%0Afn%20faz_alguma_coisa%3C'a%3E(foo%3A%20%26'a%20Foo)%20-%3E%20%26'a%20i32%20%7B%0A%20%20%20%20return%20%26foo.x%3B%0A%7D%0A%0Afn%20main()%20%7B%0A%20%20%20%20let%20mut%20foo%20%3D%20Foo%20%7B%20x%3A%2042%20%7D%3B%0A%20%20%20%20let%20x%20%3D%20%26mut%20foo.x%3B%0A%20%20%20%20*x%20%3D%2013%3B%0A%20%20%20%20%2F%2F%20x%20%C3%A9%20descartada%20aqui%20permitindo-nos%20criar%20uma%20refr%C3%AAncia%20n%C3%A3o-mut%C3%A1vel%0A%20%20%20%20let%20y%20%3D%20faz_alguma_coisa(%26foo)%3B%0A%20%20%20%20println!(%22%7B%7D%22%2C%20y)%3B%0A%20%20%20%20%2F%2F%20y%20%C3%A9%20descartada%20aqui%0A%20%20%20%20%2F%2F%20foo%20%C3%A9%20descartada%20aqui%0A%7D%0A
+  - en:
+      title: Multiple Lifetimes
+      content_markdown: |
+        Lifetime specifiers allow us to be explicit with certain scenarios the compiler cannot resolve itself 
+        by distinguishing all of a function signature component's lifetimes.
+      code: https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&code=struct%20Foo%20%7B%0A%20%20%20%20x%3A%20i32%2C%0A%7D%0A%0A%2F%2F%20foo_b%20and%20the%20return%20value%20share%20the%20same%20lifetime%0A%2F%2F%20foo_a%20has%20an%20unrelated%20lifetime%0Afn%20do_something%3C'a%2C%20'b%3E(foo_a%3A%20%26'a%20Foo%2C%20foo_b%3A%20%26'b%20Foo)%20-%3E%20%26'b%20i32%20%7B%0A%20%20%20%20println!(%22%7B%7D%22%2C%20foo_a.x)%3B%0A%20%20%20%20println!(%22%7B%7D%22%2C%20foo_b.x)%3B%0A%20%20%20%20return%20%26foo_b.x%3B%0A%7D%0A%0Afn%20main()%20%7B%0A%20%20%20%20let%20foo_a%20%3D%20Foo%20%7B%20x%3A%2042%20%7D%3B%0A%20%20%20%20let%20foo_b%20%3D%20Foo%20%7B%20x%3A%2012%20%7D%3B%0A%20%20%20%20let%20x%20%3D%20do_something(%26foo_a%2C%20%26foo_b)%3B%0A%20%20%20%20%2F%2F%20foo_a%20is%20dropped%20here%20because%20only%20foo_b's%20lifetime%20exist%20beyond%20here%0A%20%20%20%20println!(%22%7B%7D%22%2C%20x)%3B%0A%20%20%20%20%2F%2F%20x%20is%20dropped%20here%0A%20%20%20%20%2F%2F%20foo_b%20is%20dropped%20here%0A%7D%0A
+
+    fr:
+      title: Durée de vie multiple
+      content_markdown: |
+        Les spécifieurs de durée de vie permettent d'être explicite dans certains cas où le compilateur
+        ne puisse pas résoudre lui-même les durées de vie des éléments de la signature d'une fonction.
+      code: https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&code=struct%20Foo%20%7B%0A%20%20%20%20x%3A%20i32%2C%0A%7D%0A%0A%2F%2F%20foo_b%20et%20la%20valeur%20de%20retour%20partagent%20la%20m%C3%AAme%20dur%C3%A9e%20de%20vie.%0A%2F%2F%20foo_a%20a%20sa%20propre%20dur%C3%A9e%20de%20vie.%0Afn%20do_something%3C'a%2C%20'b%3E(foo_a%3A%20%26'a%20Foo%2C%20foo_b%3A%20%26'b%20Foo)%20-%3E%20%26'b%20i32%20%7B%0A%20%20%20%20println!(%22%7B%7D%22%2C%20foo_a.x)%3B%0A%20%20%20%20println!(%22%7B%7D%22%2C%20foo_b.x)%3B%0A%20%20%20%20return%20%26foo_b.x%3B%0A%7D%0A%0Afn%20main()%20%7B%0A%20%20%20%20let%20foo_a%20%3D%20Foo%20%7B%20x%3A%2042%20%7D%3B%0A%20%20%20%20let%20foo_b%20%3D%20Foo%20%7B%20x%3A%2012%20%7D%3B%0A%20%20%20%20let%20x%20%3D%20do_something(%26foo_a%2C%20%26foo_b)%3B%0A%20%20%20%20%2F%2F%20foo_a%20est%20jet%C3%A9%20(d%C3%A9construit%20et%20d%C3%A9sallou%C3%A9)%20ici.%0A%20%20%20%20%2F%2F%20Seule%20la%20dur%C3%A9e%20de%20vie%20de%20foo_b%20continue.%0A%20%20%20%20println!(%22%7B%7D%22%2C%20x)%3B%0A%20%20%20%20%2F%2F%20x%20est%20jet%C3%A9%20ici.%0A%20%20%20%20%2F%2F%20foo_b%20est%20jet%C3%A9%20ici.%0A%7D%0A
+
+    ie:
+      title: Multiplic Vive-témpores
+      content_markdown: |
+        Con specificatores de vive-témpores noi posse esser explicit quande li compilator ne posse self comprender les. 
+        Tande noi fa distint li vive-témpores de omni componentes de un function-signatura.
+      code: https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&code=struct%20Foo%20%7B%0A%20%20%20%20x%3A%20i32%2C%0A%7D%0A%0A%2F%2F%20foo_b%20e%20li%20retorn-valore%20partiprende%20li%20sam%20vive-t%C3%A9mpor%0A%2F%2F%20foo_a%20have%20un%20vive-t%C3%A9mpor%20sin%20relation%20al%20altri%0Afn%20far_alquo%3C%27a%2C%20%27b%3E(foo_a%3A%20%26%27a%20Foo%2C%20foo_b%3A%20%26%27b%20Foo)%20-%3E%20%26%27b%20i32%20%7B%0A%20%20%20%20println!(%22%7B%7D%22%2C%20foo_a.x)%3B%0A%20%20%20%20println!(%22%7B%7D%22%2C%20foo_b.x)%3B%0A%20%20%20%20%26foo_b.x%0A%7D%0A%0Afn%20main()%20%7B%0A%20%20%20%20let%20foo_a%20%3D%20Foo%20%7B%20x%3A%2042%20%7D%3B%0A%20%20%20%20let%20foo_b%20%3D%20Foo%20%7B%20x%3A%2012%20%7D%3B%0A%20%20%20%20let%20x%20%3D%20far_alquo(%26foo_a%2C%20%26foo_b)%3B%0A%20%20%20%20%2F%2F%20foo_a%20cade%20ci%20pro%20quo%20solmen%20li%20vive-t%C3%A9mpor%20de%20foo_b%20continua%20pos%20ci%0A%20%20%20%20println!(%22%7B%7D%22%2C%20x)%3B%0A%20%20%20%20%2F%2F%20x%20cade%20ci%0A%20%20%20%20%2F%2F%20foo_b%20cade%20ci%0A%7D%0A
+    pt-br:
+      title: Tempos de Vida Múltiplos
+      content_markdown: |
+        Os especificadores de tempo de vida nos permitem ser explícitos em certos cenários que o compilador não pode resolver sozinho, distinguindo todas os tempo de vida dos componentes na assinatura de uma função.
+      code: https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&code=struct%20Foo%20%7B%0A%20%20%20%20x%3A%20i32%2C%0A%7D%0A%0A%2F%2F%20foo_b%20e%20o%20valor%20de%20retorno%20compartilham%20do%20mesmo%20tempo%20de%20vida%0A%2F%2F%20foo_a%20tem%20um%20tempo%20de%20vida%20n%C3%A3o%20relacionado%0Afn%20faz_alguma_coisa%3C'a%2C%20'b%3E(foo_a%3A%20%26'a%20Foo%2C%20foo_b%3A%20%26'b%20Foo)%20-%3E%20%26'b%20i32%20%7B%0A%20%20%20%20println!(%22%7B%7D%22%2C%20foo_a.x)%3B%0A%20%20%20%20println!(%22%7B%7D%22%2C%20foo_b.x)%3B%0A%20%20%20%20return%20%26foo_b.x%3B%0A%7D%0A%0Afn%20main()%20%7B%0A%20%20%20%20let%20foo_a%20%3D%20Foo%20%7B%20x%3A%2042%20%7D%3B%0A%20%20%20%20let%20foo_b%20%3D%20Foo%20%7B%20x%3A%2012%20%7D%3B%0A%20%20%20%20let%20x%20%3D%20faz_alguma_coisa(%26foo_a%2C%20%26foo_b)%3B%0A%20%20%20%20%2F%2F%20foo_a%20%C3%A9%20descartado%20aqui%20porque%20somente%20o%20tempo%20de%20vida%20de%20%0A%20%20%20%20%2F%2F%20foo_b%20existe%20al%C3%A9m%20deste%20ponto%0A%20%20%20%20println!(%22%7B%7D%22%2C%20x)%3B%0A%20%20%20%20%2F%2F%20x%20%C3%A9%20descartado%20aqui%0A%20%20%20%20%2F%2F%20foo_b%20%C3%A9%20descartado%20aqui%0A%7D%0A
+  - en:
+      title: Static Lifetimes
+      content_markdown: |
+        A **static** variable is a memory resource created at compile-time that exists through a program start to 
+        finish. They must have their types explicitly specified.
+
+        A **static lifetime** is a memory resource that lasts indefinitely to the end of a program.  Note that by this definition
+        some static lifetime resources can be created at runtime.
+
+        Resources with static lifetimes have a special lifetime specifier `'static`.
+
+        `'static` resources will never **drop**
+
+        If static lifetime resources contain references they must all be `'static` (anything less would not live long enough).
+
+        Memory detail:
+
+        * Modifying static variables is inherently dangerous because they are globally accessable to be read from by anyone
+          introducing the possibility of a data race. We'll talk about the challenges of global data later.
+        * Rust allows the use of `unsafe { ... }` block to perform some operations that the compiler cannot make memory gaurantees about. The [<span style="color:red; font-weight: bold;">R̸͉̟͈͔̄͛̾̇͜U̶͓͖͋̅Ṡ̴͉͇̃̉̀T̵̻̻͔̟͉́͆Ơ̷̥̟̳̓͝N̶̨̼̹̲͛Ö̵̝͉̖̏̾̔M̶̡̠̺̠̐͜Î̷̛͓̣̃̐̏C̸̥̤̭̏͛̎͜O̶̧͚͖͔̊͗̇͠N̸͇̰̏̏̽̃</span>](https://doc.rust-lang.org/nomicon/) should not be talked about casually.
+
+      code: https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&code=static%20PI%3A%20f64%20%3D%203.1415%3B%0A%0Afn%20main()%20%7B%0A%20%20%20%20%2F%2F%20static%20variables%20can%20also%20be%20scoped%20to%20a%20function%0A%20%20%20%20static%20mut%20SECRET%3A%20%26'static%20str%20%3D%20%22swordfish%22%3B%0A%0A%20%20%20%20%2F%2F%20string%20literals%20have%20a%20'static%20lifetime%0A%20%20%20%20let%20msg%3A%20%26'static%20str%20%3D%20%22Hello%20World!%22%3B%0A%20%20%20%20let%20p%3A%20%26'static%20f64%20%3D%20%26PI%3B%0A%20%20%20%20println!(%22%7B%7D%20%7B%7D%22%2C%20msg%2C%20p)%3B%0A%0A%20%20%20%20%2F%2F%20You%20can%20break%20some%20rules%2C%20but%20you%20must%20be%20explicit%0A%20%20%20%20unsafe%20%7B%0A%20%20%20%20%20%20%20%20%2F%2F%20we%20can%20set%20SECRET%20to%20a%20string%20literal%20because%20it%20is%20also%20%60static%0A%20%20%20%20%20%20%20%20SECRET%20%3D%20%22abracadabra%22%3B%0A%20%20%20%20%20%20%20%20println!(%22%7B%7D%22%2C%20SECRET)%3B%0A%20%20%20%20%7D%0A%7D%0A
+
+    fr:
+      title: Durées de vie statiques
+      content_markdown: |
+        Une variable statique (en anglais **static**) est une ressource mémoire créée lors de la compilation
+        et qui existe du début jusqu'à la fin du programme. le type doit être défini explicitement.
+
+        Une **durée de vie statique** est une ressource mémoire qui existe indéfiniment jusqu'à la fin du programme.
+        Une ressource statique peut être créée lors de l'exécution du programme.
+
+        Elle est créée avec le mot-clé `'static`.
+
+        Elle ne sera jamais déconstruite et désallouée avant la fin du programme.
+
+        Si une ressouce statique contient une référence, celle-ci doit également être statique
+        (sinon la durée de vie de la référence pourrait s'arrêter avant la fin du programme).
+
+        Détails de la mémoire:
+
+        * Modifier une variable statique est dangereux car ce sont des variables globales
+        pouvant être lues par n'importe qui et pourrait créer des problèmes concurrentiels).
+        Nous parlerons des défis des données globales dans de futurs chapitres.
+        * Rust nous donne accès au bloc `unsafe { ... }` pour effectuer des opérations en mémoire
+        risquées (le résultat n'est pas garanti). Le [<span style="color:red; font-weight: bold;">R̸͉̟͈͔̄͛̾̇͜U̶͓͖͋̅Ṡ̴͉͇̃̉̀T̵̻̻͔̟͉́͆Ơ̷̥̟̳̓͝N̶̨̼̹̲͛Ö̵̝͉̖̏̾̔M̶̡̠̺̠̐͜Î̷̛͓̣̃̐̏C̸̥̤̭̏͛̎͜O̶̧͚͖͔̊͗̇͠N̸͇̰̏̏̽̃</span>](https://doc.rust-lang.org/nomicon/)
+        ne doit pas être pris à la légère.
+
+      code: https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&code=static%20PI%3A%20f64%20%3D%203.1415%3B%0A%0Afn%20main()%20%7B%0A%20%20%20%20%2F%2F%20Les%20variables%20statisques%20peuvent%20%C3%A9galement%0A%20%20%20%20%2F%2F%20%C3%AAtre%20limit%C3%A9es%20%C3%A0%20la%20port%C3%A9e%20de%20la%20fonction.%0A%20%20%20%20static%20mut%20SECRET%3A%20%26%27static%20str%20%3D%20%22espadon%22%3B%0A%0A%20%20%20%20%2F%2F%20Les%20cha%C3%AEnes%20de%20caract%C3%A8res%20ont%20une%20dur%C3%A9e%20de%20vie%20statiques.%0A%20%20%20%20let%20msg%3A%20%26%27static%20str%20%3D%20%22Hello%20World!%22%3B%0A%20%20%20%20let%20p%3A%20%26%27static%20f64%20%3D%20%26PI%3B%0A%20%20%20%20println!(%22%7B%7D%20%7B%7D%22%2C%20msg%2C%20p)%3B%0A%0A%20%20%20%20%2F%2F%20On%20peut%20casser%20les%20r%C3%A8gles%2C%20mais%20il%20faut%20%C3%AAtre%20explicite.%0A%20%20%20%20unsafe%20%7B%0A%20%20%20%20%20%20%20%20%2F%2F%20On%20peut%20modifier%20la%20variable%20statique%20SECRET.%20La%20nouvelle%20valeur%0A%20%20%20%20%20%20%20%20%2F%2F%20reste%20une%20cha%C3%AEne%20de%20caract%C3%A8res%20statiques.%0A%20%20%20%20%20%20%20%20SECRET%20%3D%20%22abracadabra%22%3B%0A%20%20%20%20%20%20%20%20println!(%22%7B%7D%22%2C%20SECRET)%3B%0A%20%20%20%20%7D%0A%7D%0A
+
+    ie:
+      title: Vive-témpores Static
+      content_markdown: |
+        Un variabil **static** es un ressurse de memorie creat al moment de compilation quel existe durant li programma
+        desde de comense til li fine. Ili besona un tip explicitmen specificat.
+
+        Un **vive-témpor static** es un ressurse de memorie quel continua til li fine del programma. A notar que secun ti definition
+        quelc ressurses con vive-témpor static posse esser creat ye li execution del programma.
+
+        Ressurses con vive-témpores static possede un special specificator `'static`.
+
+        `'static` ressurses nequande **cade**
+
+        Si un ressurse con un vive-témpor static possede referenties, ili deve omnis esser `'static` (quelcunc altri vive-témpor
+        ne vell viver sat long).
+
+        Detallies pri memorie:
+        * Modificar variabiles static es dangerosi pro que ili es globalmen accessibil por letion de quicunc, quel introducte li
+          possibilitá de data-concurrentie. Noi va parlar pri li desfacilitás de data global plu tard.
+        * Rust possibilisa li usation de un bloc `unsafe { ... }` por far quelc operationes queles li compilator ne posse garantir. Li [<span style="color:red; font-weight: bold;">R̸͉̟͈͔̄͛̾̇͜U̶͓͖͋̅Ṡ̴͉͇̃̉̀T̵̻̻͔̟͉́͆Ơ̷̥̟̳̓͝N̶̨̼̹̲͛Ö̵̝͉̖̏̾̔M̶̡̠̺̠̐͜Î̷̛͓̣̃̐̏C̸̥̤̭̏͛̎͜O̶̧͚͖͔̊͗̇͠N̸͇̰̏̏̽̃</span>](https://doc.rust-lang.org/nomicon/) existe por to ma esse prudent!
+      code: https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&code=static%20PI%3A%20f64%20%3D%203.1415%3B%0A%0Afn%20main()%20%7B%0A%20%20%20%20%2F%2F%20variabiles%20static%20posse%20anc%20esser%20cadrat%20a%20un%20function%0A%20%20%20%20static%20mut%20SECRET%3A%20%26%27static%20str%20%3D%20%22swordfish%22%3B%0A%0A%20%20%20%20%2F%2F%20l%C3%ADtterales%20string%20have%20li%20vive-t%C3%A9mpor%20%27static%0A%20%20%20%20let%20msg%3A%20%26%27static%20str%20%3D%20%22Salute%20munde!%22%3B%0A%20%20%20%20let%20p%3A%20%26%27static%20f64%20%3D%20%26PI%3B%0A%20%20%20%20println!(%22%7B%7D%20%7B%7D%22%2C%20msg%2C%20p)%3B%0A%0A%20%20%20%20%2F%2F%20On%20posse%20rupter%20li%20regules%2C%20ma%20deve%20esser%20explicit%0A%20%20%20%20unsafe%20%7B%0A%20%20%20%20%20%20%20%20%2F%2F%20noi%20posse%20far%20SECRET%20un%20l%C3%ADtterale%20string%20nam%20anc%20it%20es%20%60static%0A%20%20%20%20%20%20%20%20SECRET%20%3D%20%22abracadabra%22%3B%0A%20%20%20%20%20%20%20%20println!(%22%7B%7D%22%2C%20SECRET)%3B%0A%20%20%20%20%7D%0A%7D%0A
+    pt-br:
+      title: Tempos de Vida Estáticos
+      content_markdown: |
+        Uma variável **estática** é um recurso de memória criado em tempo de compilação que existe do início ao fim dentro de um programa. Eles devem ter seus tipos especificados explicitamente.
+
+        Um recurso com **tempo de vida estático** é um recurso de memória que dura indefinidamente até o término de um programa. Observe que, por essa definição, alguns recursos com tempo de vida estático podem ser criados em tempo de execução.
+
+        Recursos com tempo de vida estático têm o especificador de tempo de vida especial `'static`.
+
+        Recursos `'static` nunca serão **descartados**.
+
+        Se os recursos com tempo de vida estático contiverem referências, todos deverão ser `'static` (nada menos do que isso viveria tempo suficiente).
+
+        Detalhes da memória:
+        * A modificação de variáveis estáticas é inerentemente perigosa, porque elas são acessíveis globalmente para serem lidas por qualquer um introduzindo a possibilidade de uma corrida de dados. Falaremos sobre os desafios dos dados globais mais tarde.
+        * O Rust permite o uso do bloco `unsafe {...}` para executar algumas operações sobre as quais o compilador não pode garantir a integridade do que está guardado na memória. O [<span style="color:red; font-weight: bold;">R̸͉̟͈͔̄͛̾̇͜U̶͓͖͋̅Ṡ̴͉͇̃̉̀T̵̻̻͔̟͉́͆Ơ̷̥̟̳̓͝N̶̨̼̹̲͛Ö̵̝͉̖̏̾̔M̶̡̠̺̠̐͜Î̷̛͓̣̃̐̏C̸̥̤̭̏͛̎͜O̶̧͚͖͔̊͗̇͠N̸͇̰̏̏̽̃</span>](https://doc.rust-lang.org/nomicon/) não deve ser mencionado em vão.
+      code: https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&code=static%20PI%3A%20f64%20%3D%203.1415%3B%0A%0Afn%20main()%20%7B%0A%20%20%20%20%2F%2F%20vari%C3%A1veis%20est%C3%A1ticas%20tamb%C3%A9m%20podem%20ter%20escopo%20definido%20para%20uma%20fun%C3%A7%C3%A3o%0A%20%20%20%20static%20mut%20SECRETO%3A%20%26'static%20str%20%3D%20%22senha%22%3B%0A%0A%20%20%20%20%2F%2F%20strings%20t%C3%AAm%20o%20mesmo%20tempo%20de%20vida%20que%20as%20vari%C3%A1veis%20est%C3%A1ticas%0A%20%20%20%20let%20msg%3A%20%26'static%20str%20%3D%20%22Ol%C3%A1%20Mundo!%22%3B%0A%20%20%20%20let%20p%3A%20%26'static%20f64%20%3D%20%26PI%3B%0A%20%20%20%20println!(%22%7B%7D%20%7B%7D%22%2C%20msg%2C%20p)%3B%0A%0A%20%20%20%20%2F%2F%20voc%C3%AA%20pode%20quebrar%20algumas%20regras%2C%20mas%20deve%20ser%20expl%C3%ADcito%0A%20%20%20%20unsafe%20%7B%0A%20%20%20%20%20%20%20%20%2F%2F%20podemos%20atribuir%20uma%20string%20a%20SECRETO%20porque%20ela%20tamb%C3%A9m%20%C3%A9%20est%C3%A1tica%0A%20%20%20%20%20%20%20%20SECRETO%20%3D%20%22abracadabra%22%3B%0A%20%20%20%20%20%20%20%20println!(%22%7B%7D%22%2C%20SECRETO)%3B%0A%20%20%20%20%7D%0A%7D%0A
+  - en:
+      title: Lifetimes In Data Types
+      content_markdown: |
+        Similarly to functions, data types can be parameterized with lifetime specifiers of its members.
+
+        Rust validates that the containing data structure of the references never lasts longer than the owners its references point to.
+
+        We can't have structs running around with references pointing to nothingness!
+      code: https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&code=struct%20Foo%3C'a%3E%20%7B%0A%20%20%20%20i%3A%26'a%20i32%0A%7D%0A%0Afn%20main()%20%7B%0A%20%20%20%20let%20x%20%3D%2042%3B%0A%20%20%20%20let%20foo%20%3D%20Foo%20%7B%0A%20%20%20%20%20%20%20%20i%3A%20%26x%0A%20%20%20%20%7D%3B%0A%20%20%20%20println!(%22%7B%7D%22%2Cfoo.i)%3B%0A%7D%0A
+
+    fr:
+      title: Durée de vie dans les types de données
+      content_markdown: |
+        De la même manière que les fonctions, les types de données peuvent être paramétrés avec
+        des spécifieurs de durée de vie pour un ou plusieurs de ses membres.
+
+        Si une structure contient une référence, alors le compilateur Rust s'assure que la durée de vie
+        de la structure n'exède pas celle du 'propriétaire' de la référence.
+
+        Le compilateur Rust ne permet pas d'avoir une structure possédant
+        des références pointant vers rien du tout.
+      code: https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&code=struct%20Foo%3C'a%3E%20%7B%0A%20%20%20%20i%3A%26'a%20i32%0A%7D%0A%0Afn%20main()%20%7B%0A%20%20%20%20let%20x%20%3D%2042%3B%0A%20%20%20%20let%20foo%20%3D%20Foo%20%7B%0A%20%20%20%20%20%20%20%20i%3A%20%26x%0A%20%20%20%20%7D%3B%0A%20%20%20%20println!(%22%7B%7D%22%2Cfoo.i)%3B%0A%7D%0A
+
+    ie:
+      title: Vive-témpores in tipes de data
+      content_markdown: |
+        Similmen a functiones, data-tipes posse esser parametrisat con specificatores de vive-témpores de lor membres.
+        Rust fa cert que li data-structura del contenent referenties ne vive plu long quam li proprietarios a queles lor referenties monstra.
+        Noi ne posse tolerar structs con referenties monstrant nullcos!
+      code: https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&code=struct%20Foo%3C'a%3E%20%7B%0A%20%20%20%20i%3A%26'a%20i32%0A%7D%0A%0Afn%20main()%20%7B%0A%20%20%20%20let%20x%20%3D%2042%3B%0A%20%20%20%20let%20foo%20%3D%20Foo%20%7B%0A%20%20%20%20%20%20%20%20i%3A%20%26x%0A%20%20%20%20%7D%3B%0A%20%20%20%20println!(%22%7B%7D%22%2Cfoo.i)%3B%0A%7D%0A
+    pt-br:
+      title: Tempos de Vida em Tipos de Dados
+      content_markdown: |
+        Da mesma forma que as funções, os tipos de dados podem ser parametrizados com os especificadores de tempos de vida
+
+        O Rust valida a estrutura de dados que contém as referências para que nunca dure mais do que os proprietários para os quais as suas referências apontam.
+
+        Não podemos ter estrut
